@@ -13,3 +13,5 @@ class CartSuccessState extends CartState{
   CartSuccessState({required this.cartItems});
 }
 
+class CartLoadingState extends CartState{}
+
