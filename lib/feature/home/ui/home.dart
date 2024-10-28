@@ -30,15 +30,27 @@ class _HomeState extends State<Home> {
         if (state is HomeNavigateToCartPageActionState) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CartPage()),
+            MaterialPageRoute(builder: (context) => const CartPage()),
           );
         }
         if (state is HomeNavigateToWishlistPageActionState) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => WishlistPage()),
+            MaterialPageRoute(builder: (context) => const WishlistPage()),
           );
         }
+
+        if(state is HomeProductItemWishlistedActionState){
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Item Wishlisted"))
+          );
+        }
+        if(state is HomeProductItemCarteddActionState){
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("Item Carted"))
+          );
+        }
+
       },
       builder: (context, state) {
         switch (state.runtimeType) {
@@ -95,15 +107,14 @@ class _HomeState extends State<Home> {
               ),
             );
 
-            break;
 
-          case HomeErrorState:
-            return Scaffold(body: Center(child: Text("Error"),),);
+          case HomeErrorState _:
+            return const Scaffold(body: Center(child: Text("Error"),),);
             break;
           default: Container();
 
         }
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

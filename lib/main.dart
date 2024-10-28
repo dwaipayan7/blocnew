@@ -1,5 +1,7 @@
+import 'package:blocnew/feature/cart/bloc/cart_bloc.dart';
 import 'package:blocnew/feature/home/bloc/home_bloc.dart';
 import 'package:blocnew/feature/home/ui/home.dart';
+import 'package:blocnew/feature/wishlist/bloc/wishlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_)=> HomeBloc()),
+        BlocProvider(create: (_)=> CartBloc()),
+        BlocProvider(create: (_)=> WishlistBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
